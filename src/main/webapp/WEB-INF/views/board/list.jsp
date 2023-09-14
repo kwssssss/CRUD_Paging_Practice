@@ -65,7 +65,7 @@
 				<option value="W" ${pageMaker.cri.type eq 'W' ? 'selected' : ''}>작성자</option>
 				<option value="TC" ${pageMaker.cri.type eq 'TC' ? 'selected' : ''}>제목+내용</option>
 				<option value="TW" ${pageMaker.cri.type eq 'TW' ? 'selected' : ''}>제목+작성자</option>
-				<option value="TWC" ${pageMaker.cri.type eq 'TWC' ? 'selected' : ''}>제목+내용+작성자</option>
+				<option value="TWC" ${pageMaker.cri.type eq 'TWC' ? 'selected' : ''}>제목+내용+작성자</option> <!--search.jsp형태로 만들어 common에 넣을 수 있음  -->
 			</select>
 			<div class="input-group">
 				<input type="text" name="keyword" class="form-control rounded-0" value="${pageMaker.cri.keyword}"/>
@@ -101,38 +101,7 @@
 
 </table>
 
-<ul class="pagination justify-content-center">
-	<c:if test="${pageMaker.cri.pageNum > 1}">
-		<li class="page-item"><a class="page-link" href="${cri.getLink(1)}"> <i
-				class="fa-solid fa-backward-step"></i>
-		</a></li>
-	</c:if>
-
-	<c:if test="${pageMaker.prev}">
-		<li class="page-item"><a href="${pageMaker.cri.getLink(pageMaker.startPage-1)}"
-			class="page-link"> <i class="fa-solid fa-angle-left"></i>
-		</a></li>
-	</c:if>
-
-	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"
-		var="num">
-		<li class="page-item ${pageMaker.cri.pageNum == num ? 'active' : '' }">
-			<!--el의 삼항연산자 , 현재 페이지면 active 클래스 배정--> <a class="page-link" href="${cri.getLink(num)}">${num}</a>
-		</li>
-	</c:forEach>
-
-	<c:if test="${pageMaker.next}">
-		<li class="page-item"><a class="page-link" href="${pageMaker.cri.getLink(pageMaker.endPage+1)}"> <i class="fa-solid fa-angle-right"></i>
-		</a></li>
-	</c:if>
-
-	<c:if test="${pageMaker.cri.pageNum < pageMaker.totalPage}">
-		<li class="page-item"><a class="page-link"
-			href="${cri.getLink(pageMaker.totalPage)}"> <i
-				class="fa-solid fa-forward-step"></i>
-		</a></li>
-	</c:if>
-</ul>
+<%@include file="../common/pagination.jsp"%>
 
 <%-- <form id="actionForm" action="/board/list" method="get">
 	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}" type="number" /> 
