@@ -29,17 +29,18 @@ public class BoardMapperTest {
 		}
 	}
 
-	@Test
+	// @Test
 	public void testInsert() {
 
-		BoardVO board = new BoardVO();
-		board.setTitle("새로 작성하는 글");
-		board.setContent("새로 작성하는 내용");
-		board.setWriter("newbie");
+		for (int i = 0; i < 260; i++) {
+			BoardVO board = new BoardVO();
+			board.setTitle("새로 작성하는 글" + i);
+			board.setContent("새로 작성하는 내용" + i);
+			board.setWriter("newbie" + i % 5);
 
-		mapper.insert(board);
-
-		log.info(board);
+			mapper.insert(board);
+		}
+//		log.info(board);
 	}
 
 //	@Test
@@ -85,15 +86,26 @@ public class BoardMapperTest {
 
 		log.info("UPDATE COUNT: " + count);
 	}
-	
+
 	@Test
 	public void testPaging() {
-		
+
 		Criteria cri = new Criteria(2, 4);
-		
+
 		List<BoardVO> list = mapper.getListWithPaging(cri);
-		
-		for(BoardVO board: list) {
+
+		for (BoardVO board : list) {
+			log.info(board);
+		}
+	}
+
+	@Test
+	public void testSearch() {
+		Criteria cri = new Criteria();
+		cri.setKeyword("새로");
+		cri.setType("TC"); // 제목, 내용에서 검색
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		for (BoardVO board : list) {
 			log.info(board);
 		}
 	}

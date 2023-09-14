@@ -48,7 +48,7 @@
 			<button type="reset" class="btn btn-primary">
 				<i class="fas fa-undo"></i>취소
 			</button>
-			<a href="list" class="btn btn-primary"> <i class="fas fa-list"></i>목록
+			<a href="javascript:history.back()" class="btn btn-primary"> <i class="fas fa-list"></i>목록 <!--href에 javascript:를 적을시 링크로 보는게 아니라 자바스크립트 코드로 보겠다는 뜻  -->
 			</a>
 		</form>
 	</div>

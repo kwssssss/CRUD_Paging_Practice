@@ -20,6 +20,10 @@
 	color: white;
 }
 
+a.page-link {
+	border: none;
+}
+
 /* * {
 	font-family: 'Nunito';
 }
