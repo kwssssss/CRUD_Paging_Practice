@@ -13,9 +13,9 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
-@AllArgsConstructor
+@AllArgsConstructor // 생성자를 통해서 와이어링 할 수 있다
 public class BoardServiceImpl implements BoardService {
-	// @Autowired
+	// @Autowired / 생성자 주입 아니라 field 앞에 autowired 붙여도 됨
 	private BoardMapper mapper;
 
 	@Override
