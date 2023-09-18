@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <%@ include file="../layouts/header.jsp"%>
 <%-- 개별 페이지 --%>
@@ -25,27 +26,33 @@
 	<i class="far fa-edit"></i>여행지 등록
 </h1>
 <div class="panel panel-default">
+
 	<div class="panel-body">
-		<form role="form" method="post">
+	
+		<form:form modelAttribute="travel" role="form">
+			<form:hidden path="no" />
+			
 			<div class="form-group">
-				<label>권역</label> <input name="region" class="form-control"
-					required>
+				<form:label path="region">권역</form:label> 
+				<form:input path="region" cssClass="form-control"/>
+				<form:errors path="region" cssClass="error"/>
 			</div>
+			
 			<div class="form-group">
-				<label>제목</label> <input name="title" class="form-control"
-					required>
+				<form:label path="title">제목</form:label> 
+				<form:input path="title" cssClass="form-control"/>
+				<form:errors path="title" cssClass="error"/>
 			</div>
+			
 			<div class="form-group">
-				<label>주소</label> <input name="address" class="form-control"
-					required>
+				<form:label path="address">주소</form:label> 
+				<form:input path="address" cssClass="form-control"/>
 			</div>
+			
 			<div class="form-group">
-				<label>전화번호</label> <input name="phone" class="form-control"
-					required>
-			</div>
-			<div class="form-group">
-				<label>내용</label>
-				<textarea name="description" class="form-control" id="description" rows="10"></textarea>
+				<form:label path="description">내용</form:label> 
+				<form:textarea path="description" Class="form-control" id="description"></form:textarea>
+				<form:errors path="description" cssClass="error"/>
 			</div>
 
 			<button type="submit" class="btn btn-primary">
@@ -56,7 +63,7 @@
 			</button>
 			<a href="javascript:history.back()" class="btn btn-primary"> <i class="fas fa-list"></i>목록 <!--href에 javascript:를 적을시 링크로 보는게 아니라 자바스크립트 코드로 보겠다는 뜻  -->
 			</a>
-		</form>
+		</form:form>
 	</div>
 </div>
 

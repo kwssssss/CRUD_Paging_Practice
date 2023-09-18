@@ -13,31 +13,7 @@
 </h1>
 
 
-<div class="d-flex justify-content-between align-items-center my-4">
-	<div>총 ${pageMaker.total} 건 ( ${pageMaker.cri.pageNum} ..
-		${pageMaker.totalPage })</div>
-	<div>
-		<form id="searchForm" method="get" class="d-flex">
-			<input type="hidden" name="pageNum" value="1"> <select
-				name="type" class="form-select rounded-0 ml-1">
-				<option value="" ${pageMaker.cri.type == null ? 'selected' : ''}>-- 검색대상선택 --</option>
-				<option value="T" ${pageMaker.cri.type eq 'T' ? 'selected' : ''}>제목</option>
-				<option value="C" ${pageMaker.cri.type eq 'C' ? 'selected' : ''}>내용</option>
-				<option value="W" ${pageMaker.cri.type eq 'W' ? 'selected' : ''}>작성자</option>
-				<option value="TC" ${pageMaker.cri.type eq 'TC' ? 'selected' : ''}>제목+내용</option>
-				<option value="TW" ${pageMaker.cri.type eq 'TW' ? 'selected' : ''}>제목+작성자</option>
-				<option value="TWC" ${pageMaker.cri.type eq 'TWC' ? 'selected' : ''}>제목+내용+작성자</option> <!--search.jsp형태로 만들어 common에 넣을 수 있음  -->
-			</select>
-			<div class="input-group">
-				<input type="text" name="keyword" class="form-control rounded-0" value="${pageMaker.cri.keyword}"/>
-				<button type="submit" class="btn btn-success rounded-0">
-					<i class="fa-solid fa-magnifying-glass"></i> 검색
-				</button>
-			</div>
-		</form>
-
-	</div>
-</div>
+<%@ include file="../common/search_bar.jsp" %>
 
 <table class="table table-striped table-hover">
 	<thead>

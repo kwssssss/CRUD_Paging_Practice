@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <%@ include file="../layouts/header.jsp"%>
 <%-- 개별 페이지 --%>
@@ -25,28 +26,35 @@
 </h1>
 <div class="panel panel-default">
 	<div class="panel-body">
-		<form role="form" method="post">
-			
-			<input type="hidden" name="no" value="${travel.no}">
-			
+		<form:form modelAttribute="travel" role="form">
+
+			<form:hidden path="no" />
 
 
 
+
 			<div class="form-group">
-				<label>권역</label> <input name="region" class="form-control" value="${travel.region}" required>
+				<form:label path="region">권역</form:label>
+				<form:input path="region" cssClass="form-control" />
+				<form:errors path="region" cssClass="error" />
 			</div>
+
 			<div class="form-group">
-				<label>제목</label> <input name="title" class="form-control" value="${travel.title}" required>
+				<form:label path="title">제목</form:label>
+				<form:input path="title" cssClass="form-control" />
+				<form:errors path="title" cssClass="error" />
 			</div>
+
 			<div class="form-group">
-				<label>주소</label> <input name="address" class="form-control" value="${travel.address}" required>
+				<form:label path="address">주소</form:label>
+				<form:input path="address" cssClass="form-control" />
 			</div>
+
 			<div class="form-group">
-				<label>전화번호</label> <input name="phone" class="form-control" value="${travel.phone}">
-			</div>
-			<div class="form-group">
-				<label>내용</label>
-				<textarea name="description" class="form-control" id="description" rows="10">${travel.description}</textarea>
+				<form:label path="description">내용</form:label>
+				<form:textarea path="description" Class="form-control"
+					id="description"></form:textarea>
+				<form:errors path="description" cssClass="error" />
 			</div>
 
 			<button type="submit" class="btn btn-primary">
@@ -55,9 +63,10 @@
 			<button type="reset" class="btn btn-primary">
 				<i class="fas fa-undo"></i>취소
 			</button>
-			<a href="${cri.getLink('get')}&no=${travel.no}" class="btn btn-primary get"> <i class="fas fa-list-alt"></i>돌아가기
+			<a href="${cri.getLink('get')}&no=${travel.no}"
+				class="btn btn-primary get"> <i class="fas fa-list-alt"></i>돌아가기
 			</a>
-		</form>
+		</form:form>
 
 		<%-- <form id="getForm" action="/board/get" method="get">
 			<input type="hidden" id="bno" name="bno" value="${board.bno}" /> 
