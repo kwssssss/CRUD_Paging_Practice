@@ -20,6 +20,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { 
 		"org.galapagos.controller",
 		"org.galapagos.exception"
+		
 })
 public class ServletConfig implements WebMvcConfigurer {
 
